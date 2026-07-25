@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bebidas – La Gloria Restaurante</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0e0b07; color: #f5e9c8; font-family: 'Montserrat', sans-serif; min-height: 100vh; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(201,169,98,0.2); position: sticky; top: 0; background: rgba(14,11,7,0.95); backdrop-filter: blur(8px); z-index: 100; }
+    .logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.6rem; color: #C9A962; text-decoration: none; }
+    .logo span { font-style: normal; font-size: 0.6rem; display: block; letter-spacing: 5px; color: rgba(201,169,98,0.6); margin-top: -4px; }
+    nav a.back { color: #C9A962; text-decoration: none; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(201,169,98,0.4); padding: 8px 20px; transition: all 0.3s; }
+    nav a.back:hover { background: rgba(201,169,98,0.1); border-color: #C9A962; }
+    .hero { text-align: center; padding: 80px 24px 60px; background: radial-gradient(ellipse at center top, rgba(201,169,98,0.08) 0%, transparent 70%); }
+    .hero-label { font-size: 0.7rem; letter-spacing: 6px; color: #C9A962; text-transform: uppercase; margin-bottom: 16px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); color: #C9A962; line-height: 1.1; margin-bottom: 16px; }
+    .hero p { font-size: 0.9rem; color: rgba(245,233,200,0.5); letter-spacing: 2px; max-width: 420px; margin: 0 auto; }
+    .divider { width: 60px; height: 1px; background: #C9A962; margin: 28px auto; opacity: 0.5; }
+    .menu-section { max-width: 1200px; margin: 0 auto; padding: 40px 32px 100px; }
+    .section-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: rgba(201,169,98,0.7); margin-bottom: 32px; padding-bottom: 12px; border-bottom: 1px solid rgba(201,169,98,0.15); }
+    .drinks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+    .card { background: #1a1610; border: 1px solid rgba(201,169,98,0.12); border-radius: 4px; overflow: hidden; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-6px); border-color: rgba(201,169,98,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .card-visual { height: 220px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .blueberry .card-visual { background: linear-gradient(135deg, #1a0a3a 0%, #2d1b69 50%, #4a2fa0 100%); }
+    .strawberry .card-visual { background: linear-gradient(135deg, #2a0808 0%, #8b1a1a 50%, #c0392b 100%); }
+    .mango .card-visual { background: linear-gradient(135deg, #1a3a00 0%, #4a7c00 50%, #e8a000 100%); }
+    .lychee .card-visual { background: linear-gradient(135deg, #1a0a2e 0%, #5a1a6a 50%, #c040b0 100%); }
+    .passion .card-visual { background: linear-gradient(135deg, #0a1a2e 0%, #1a4a6a 50%, #0080c0 100%); }
+    .watermelon .card-visual { background: linear-gradient(135deg, #0a2a0a 0%, #1a6a2a 50%, #e03060 100%); }
+    .drink-icon { font-size: 5rem; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5)); }
+    .flavor-tag { position: absolute; bottom: 12px; left: 16px; font-size: 0.6rem; letter-spacing: 4px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+    .card-body { padding: 20px; }
+    .card-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #f5e9c8; margin-bottom: 6px; }
+    .card-desc { font-size: 0.75rem; color: rgba(245,233,200,0.45); line-height: 1.6; margin-bottom: 16px; }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .price { color: #C9A962; font-size: 1.05rem; font-weight: 600; }
+    .size-tags { display: flex; gap: 6px; }
+    .size-tag { font-size: 0.6rem; letter-spacing: 1px; padding: 3px 8px; border: 1px solid rgba(201,169,98,0.3); color: rgba(201,169,98,0.6); border-radius: 20px; }
+    footer { text-align: center; padding: 40px; border-top: 1px solid rgba(201,169,98,0.1); font-size: 0.7rem; letter-spacing: 3px; color: rgba(201,169,98,0.3); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">la Gloria<span>RESTAURANTE</span></a>
+  <a href="index.html" class="back">← Inicio</a>
+</nav>
+<section class="hero">
+  <p class="hero-label">Carta de</p>
+  <h1>Bebidas</h1>
+  <div class="divider"></div>
+  <p>Limonadas artesanales &amp; combinaciones de temporada</p>
+</section>
+<main class="menu-section">
+  <p class="section-title">Limonadas Artesanales</p>
+  <div class="drinks-grid">
+    <div class="card blueberry">
+      <div class="card-visual"><span class="drink-icon">🫐</span><span class="flavor-tag">Blueberry</span></div>
+      <div class="card-body">
+        <div class="card-name">Limonada de Arándano</div>
+        <div class="card-desc">Arándanos frescos, limón exprimido, hielo & menta. Refrescante y antioxidante.</div>
+        <div class="card-footer"><span class="price">desde $8</span><div class="size-tags"><span class="size-tag">Small</span><span class="size-tag">Large</span></div></div>
+      </div>
+    </div>
+    <div class="card strawberry">
+      <div class="card-visual"><span class="drink-icon">🍓</span><span class="flavor-tag">Strawberry</span></div>
+      <div class="card-body">
+        <div class="card-name">Limonada de Fresa</div>
+        <div class="card-desc">Fresas naturales, limón fresco, hielo & sirope artesanal.</div>
+        <div class="card-footer"><span class="price">desde $8</span><div class="size-tags"><span class="size-tag">Small</span><span class="size-tag">Large</span></div></div>
+      </div>
+    </div>
+    <div class="card mango">
+      <div class="card-visual"><span class="drink-icon">🥭</span><span class="flavor-tag">Tropical</span></div>
+      <div class="card-body">
+        <div class="card-name">Mango Tropical</div>
+        <div class="card-desc">Mango maduro, maracuyá, menta fresca & hielo granizado.</div>
+        <div class="card-footer"><span class="price">desde $9</span><div class="size-tags"><span class="size-tag">Small</span><span class="size-tag">Large</span></div></div>
+      </div>
+    </div>
+    <div class="card lychee">
+      <div class="card-visual"><span class="drink-icon">🍇</span><span class="flavor-tag">Exotic</span></div>
+      <div class="card-body">
+        <div class="card-name">Uva & Lichi</div>
+        <div class="card-desc">Uvas moradas, lichi, limón & agua con gas. Elegante y refrescante.</div>
+        <div class="card-footer"><span class="price">desde $9</span><div class="size-tags"><span class="size-tag">Small</span><span class="size-tag">Large</span></div></div>
+      </div>
+    </div>
+    <div class="card passion">
+      <div class="card-visual"><span class="drink-icon">🍋</span><span class="flavor-tag">Signature</span></div>
+      <div class="card-body">
+        <div class="card-name">Gloria Passion</div>
+        <div class="card-desc">Maracuyá, jengibre, limón & agua mineral. Nuestra bebida insignia.</div>
+        <div class="card-footer"><span class="price">desde $10</span><div class="size-tags"><span class="size-tag">Small</span><span class="size-tag">Large</span></div></div>
+      </div>
+    </div>
+    <div class="card watermelon">
+      <div class="card-visual"><span class="drink-icon">🍉</span><span class="flavor-tag">Fresh</span></div>
+      <div class="card-body">
+        <div class="card-name">Sandía & Menta</div>
+        <div class="card-desc">Sandía natural licuada, menta, limón & hielo granizado.</div>
+        <div class="card-footer"><span class="price">desde $8</span><div class="size-tags"><span class="size-tag">Small</span><span class="size-tag">Large</span></div></div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>LIMA · QUITO · CARTAGENA &nbsp;|&nbsp; LA GLORIA RESTAURANTE</footer>
+</body>
+</html>
