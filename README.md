@@ -123,6 +123,19 @@ npm run schema:deploy
 
 Inicia sesión con la cuenta propietaria del proyecto de Sanity.
 
+### Despliegue
+
+| | |
+|---|---|
+| Repositorio | <https://github.com/ISAIASNIAUPARI/1PROYECTO> |
+| Proyecto en Vercel | `la-gloria-restaurante` (equipo *Arte Creativo*) |
+| Web | <https://la-gloria-restaurante.vercel.app> |
+| Panel | <https://la-gloria-restaurante.vercel.app/studio> |
+
+**Cada push a `main` despliega solo.** No hace falta ejecutar nada a mano.
+
+Las tres variables `NEXT_PUBLIC_SANITY_*` ya están configuradas en Vercel para los tres entornos (production, preview, development). Los tokens de Sanity **no** están en Vercel, y no hacen falta: la web sólo lee contenido publicado.
+
 ### Cómo llega el contenido a la web
 
 Las páginas se generan de forma estática y **revalidan cada 60 segundos** (`export const revalidate = 60`). Un cambio publicado en el Studio aparece en la web en menos de un minuto, sin redesplegar.
