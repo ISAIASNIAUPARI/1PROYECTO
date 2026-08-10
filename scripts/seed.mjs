@@ -98,10 +98,14 @@ async function build() {
       drinksButtonEnabled: true,
       drinksButtonLabel: 'BEBIDAS',
       chatButtonEnabled: true,
-      chatButtonLabel: 'Atención al Cliente',
-      chatButtonTooltip: 'Chatea con nosotros',
-      // Sin URL el botón no se muestra. En el HTML original apuntaba a
-      // "#atencion-pendiente" y no llevaba a ningún sitio.
+      chatWebhookUrl:
+        'https://n8n-n8n.kwtwgj.easypanel.host/webhook/chat-soporte',
+      chatTitle: 'Atención al Cliente',
+      chatSubtitle: 'Normalmente respondemos al instante',
+      chatWelcome:
+        '¡Hola! Soy el asistente de La Gloria. ¿En qué puedo ayudarte? Puedo informarte sobre la carta, los horarios o tu reserva.',
+      chatPlaceholder: 'Escribe tu mensaje…',
+      chatNotifications: ['¿Deseas reservar? 🍽️', 'Contáctanos 💬'],
     },
 
     {

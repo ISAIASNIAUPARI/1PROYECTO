@@ -10,7 +10,8 @@ export const siteSettingsQuery = groq`*[_id == "siteSettings"][0]{
   navItems[]{ label, href, boxed },
   showLanguageSwitch,
   drinksButtonEnabled, drinksButtonLabel,
-  chatButtonEnabled, chatButtonLabel, chatButtonTooltip, chatButtonUrl
+  chatButtonEnabled, chatWebhookUrl, chatTitle, chatSubtitle,
+  chatWelcome, chatPlaceholder, chatNotifications
 }`
 
 export const heroQuery = groq`*[_id == "heroSection"][0]{

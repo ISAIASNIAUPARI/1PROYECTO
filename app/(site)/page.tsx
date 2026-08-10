@@ -154,9 +154,12 @@ export default async function HomePage() {
         drinksEnabled={settings?.drinksButtonEnabled}
         drinksLabel={settings?.drinksButtonLabel}
         chatEnabled={settings?.chatButtonEnabled}
-        chatLabel={settings?.chatButtonLabel}
-        chatTooltip={settings?.chatButtonTooltip}
-        chatUrl={settings?.chatButtonUrl}
+        chatWebhookUrl={settings?.chatWebhookUrl}
+        chatTitle={settings?.chatTitle}
+        chatSubtitle={settings?.chatSubtitle}
+        chatWelcome={settings?.chatWelcome}
+        chatPlaceholder={settings?.chatPlaceholder}
+        chatNotifications={settings?.chatNotifications}
       />
     </>
   )

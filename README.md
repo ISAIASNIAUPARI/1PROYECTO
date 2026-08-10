@@ -42,7 +42,8 @@ Si te equivocas, el botón de los tres puntos junto a *Publish* tiene la opción
 - **Reordenar platos o bebidas**: arrastra las fichas por el icono de la izquierda.
 - **Añadir un plato**: botón *Add item* al final de la lista.
 - **Redes sociales**: en *Pie de página* verás los cinco iconos. **El icono sólo se vuelve pulsable cuando le pones un enlace**; sin enlace se ve, pero no lleva a ningún sitio (que es justo lo que hacía la web antigua).
-- **Botón de Atención al Cliente**: aparece en cuanto pegues la URL del chat en *Ajustes generales → Botones flotantes → Enlace del chat*. Mientras esté vacío, el botón no se muestra: es preferible a un botón que no hace nada.
+- **Asistente de chat**: es el botón redondo dorado de la esquina inferior izquierda. Todo se configura en *Ajustes generales → Asistente de chat*: el endpoint del agente, el título, el mensaje de bienvenida y los avisos que salen solos del botón. Si vacías el endpoint, el chat desaparece de la web.
+- **Los avisos del chat** («¿Deseas reservar? 🍽️», «Contáctanos 💬») salen uno cada 6 segundos, en bucle, y **dejan de salir en cuanto el visitante abre el chat**. Puedes cambiarlos, añadir más o vaciar la lista para quitarlos.
 - **Los vídeos de fondo** se pueden reemplazar desde *Especiales* y *Nuestro Menú*. Si los dejas vacíos se usan los que vienen con la web. Sube MP4 de menos de 10 MB.
 - **Los fotogramas de la animación** del scroll (126 imágenes) son archivos del proyecto y no se editan desde el panel. Para cambiarlos hace falta un desarrollador.
 
@@ -136,6 +137,25 @@ La web anterior era un único `index.html` de 21 MB: un *bundle* auto-extraíble
 - Las 29 fuentes en base64 se sustituyeron por `next/font`, que sirve las mismas familias de Google (Poppins, Playfair Display, Pinyon Script, Montserrat) desde nuestro propio dominio.
 - **El fondo de la sección Reservas era un hueco vacío del maquetador**: en producción mostraba el texto «Foto: salón del restaurante» a los visitantes. Ahora es una foto real, editable desde el panel.
 - Se eliminaron 66 MB de archivos muertos (`ziplagloria.zip` duplicaba el sitio entero, `cgi-bin.zip` estaba vacío y 5 PNG no se usaban). Siguen en el historial de git.
+
+### El asistente de chat
+
+El botón circular de abajo a la izquierda abre un chat que habla con un agente de n8n.
+
+```
+POST  <chatWebhookUrl>
+      { "sessionId": "…", "message": "…" }
+  →   { "reply": "…", "sessionId": "…" }
+```
+
+- El `sessionId` se genera en el navegador y se guarda en `localStorage`, para que el agente mantenga el hilo entre recargas y páginas.
+- El endpoint se llama **desde el navegador**, así que debe responder con `Access-Control-Allow-Origin`. El de n8n ya lo hace.
+- Si la petición falla, el chat lo dice: nunca inventa una respuesta ni finge que se envió.
+- Todo el texto y el endpoint viven en Sanity (`siteSettings`), así que cambiar de proveedor de chat no requiere tocar código.
+
+Código en [`components/ChatWidget.tsx`](components/ChatWidget.tsx).
+
+> **Aviso sobre el contenido del agente**: el agente de n8n responde con datos que **no coinciden con los de esta web** — se presenta como «La Buena Mesa», da el teléfono +593 98 765 4321 y cita platos que no están en la carta. Eso se arregla en el *system prompt* del workflow de n8n, no aquí.
 
 #### Pendiente
 
