@@ -105,9 +105,22 @@ public/
 | `npm run dev` | Servidor de desarrollo |
 | `npm run build` | Build de producción |
 | `npm run seed` | **Sobrescribe** el contenido de Sanity con el del HTML original |
-| `npm run schema:deploy` | Sube el schema a Sanity |
+| `npm run schema:deploy` | Sube el schema a Sanity (opcional, ver abajo) |
 
 > `npm run seed` es idempotente pero destructivo: pisa lo que el cliente haya editado. Úsalo sólo para poblar un dataset vacío.
+
+#### Sobre `schema:deploy`
+
+**No hace falta para que la web ni el Studio funcionen.** El Studio de `/studio` lee el schema del propio código (`sanity.config.ts`), que viaja en el build.
+
+Subir el schema a Sanity sólo sirve para que las herramientas remotas de Sanity (Media Library, acciones de agente, APIs que conocen la estructura) sepan cómo es el contenido. Requiere un token con el permiso `sanity.project/deploySchema`, que el rol *Editor* no tiene. Si lo quieres:
+
+```bash
+npx sanity login
+npm run schema:deploy
+```
+
+Inicia sesión con la cuenta propietaria del proyecto de Sanity.
 
 ### Cómo llega el contenido a la web
 
