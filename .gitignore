@@ -1,0 +1,39 @@
+# dependencias
+/node_modules
+/.pnp
+.pnp.js
+
+# build de Next.js
+/.next/
+/out/
+/build
+next-env.d.ts
+
+# Sanity
+/dist
+.sanity/
+
+# variables de entorno — NUNCA subir tokens al repositorio
+.env
+.env.local
+.env*.local
+
+# Vercel
+.vercel
+
+# logs y basura del sistema
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# ajustes locales de cada máquina, no del proyecto
+.claude/settings.local.json
+
+# (añadido por la CLI de Vercel) — .env.example sí debe versionarse:
+# es la plantilla documentada que necesita cualquiera que clone el repo.
+.env*
+!.env.example
